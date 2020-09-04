@@ -214,5 +214,21 @@ namespace CRUDEmployee.Model
             }
         }
 
+        public List<Employee> GetAllManagers(Employee updateEmployee)
+        {
+            try
+            {
+                using (Task_1Entities context = new Task_1Entities())
+                {
+                    return (from x in context.Employees where x.EmployeeID != updateEmployee.EmployeeID select x).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception " + ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+        }
+
     }
 }

@@ -26,6 +26,7 @@ namespace CRUDEmployee.ViewModel
             LocationList = locModel.GetAllLocations();
             SectorList = secModel.GetAllSectors();
             EmployeeList = empModel.GetAllEmployees();
+            ManagerList = empModel.GetAllManagers(updateEmployee);
             location = updateEmployee.Location;
             sector = updateEmployee.Sector;
 
@@ -99,9 +100,23 @@ namespace CRUDEmployee.ViewModel
             set
             {
                 employeeList = value;
-                OnPropertyChanged("SectorList");
+                OnPropertyChanged("Employeelist");
             }
-        } 
+        }
+
+        private List<Employee> managerList;
+        public List<Employee> ManagerList
+        {
+            get
+            {
+                return managerList;
+            }
+            set
+            {
+                managerList = value;
+                OnPropertyChanged("ManagerList");
+            }
+        }
 
         private Location location;
         public Location Location
